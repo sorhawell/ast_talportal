@@ -1,0 +1,38 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+
+h1 {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+  line-height: 1.1;
+  color: #333;
+}
+
+body {
+  background-color: #fff;
+  font-family: 'Lato', sans-serif;
+}
+
+
+.box.box-solid.box-danger>.box-header {
+  color:#fff;
+  background:#8c8c8c
+                    }
+
+.box.box-solid.box-danger{
+border-bottom-color:#8c8c8c;
+border-left-color:#8c8c8c;
+border-right-color:#8c8c8c;
+border-top-color:#8c8c8c;
+}
+
+/*.checkbox {margin-left:15px}*/
+
+.uncle {
+   margin-left:20px
+}
+
+.fa-info{ 
+    color:white
+}
+
+
