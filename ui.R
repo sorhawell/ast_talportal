@@ -2,7 +2,7 @@
 
 # UI-functions ------------------------------------------------------------
 
-KPI_boks_uden_nogletal <- function (titel, tekst, inputid, antal_sager, subtitle, inputid2, link, link_tekst) { 
+KPI_boks_uden_nogletal <- function (titel, tekst, inputid, antal_sager, subtitle, inputid2, link, link_tekst) {
   box(title = titel,
     collapsible = FALSE,
     collapsed = FALSE,
@@ -32,7 +32,7 @@ KPI_boks_uden_nogletal <- function (titel, tekst, inputid, antal_sager, subtitle
                ))
              # ,
              # fluidRow(
-             #   column(12, 
+             #   column(12,
              #          valueBox(
              #            value = actionLink(
              #              inputId = inputid2,
@@ -51,7 +51,7 @@ KPI_boks_uden_nogletal <- function (titel, tekst, inputid, antal_sager, subtitle
 )
 }
 
-KPI_boks_med_nogletal <- function (titel, tekst, inputid, antal_sager, periode, inputid2, noegletal, link, link_tekst) { 
+KPI_boks_med_nogletal <- function (titel, tekst, inputid, antal_sager, periode, inputid2, noegletal, link, link_tekst) {
   box(title = titel,
       collapsible = FALSE,
       collapsed = FALSE,
@@ -81,7 +81,7 @@ KPI_boks_med_nogletal <- function (titel, tekst, inputid, antal_sager, periode, 
                  ))
                 ,
                 fluidRow(
-                  column(12, 
+                  column(12,
                          valueBox(
                            value = actionLink(
                              inputId = inputid2,
@@ -107,10 +107,10 @@ KPI_boks_med_nogletal <- function (titel, tekst, inputid, antal_sager, periode, 
 
 make_pickerInput <- function(inputId, label, sagsemner, lovgrundlag, soeg_paa, soeg_paa2, soegetype, choiceOpt) {
    pickerInput(
-       inputId = inputId, 
-       label = label, 
+       inputId = inputId,
+       label = label,
        choices = lapply(split(as.character(sagsemner), lovgrundlag), as.list),
-       multiple = TRUE, 
+       multiple = TRUE,
        options = inputpicker_options(soeg_paa, soeg_paa2, soegetype),
        choicesOpt = list(tokens = choiceOpt)
    )
@@ -119,10 +119,10 @@ make_pickerInput <- function(inputId, label, sagsemner, lovgrundlag, soeg_paa, s
 make_materialSwitch <- function(inputId) {
   materialSwitch(
     inputId = inputId,
-    label = "Tilføj landstotal", 
+    label = "Tilføj landstotal",
     value = FALSE,
     status = "primary"
-  )  
+  )
 }
 
 # make_radioButtons <- function(inputId, label, valg1, valg2) {
@@ -137,22 +137,22 @@ make_materialSwitch <- function(inputId) {
 
 make_nulstil_knap <- function(inputId) {
   span(actionButton(inputId, "Nulstil filtre", icon = icon("eraser")), style = "postition:absolute;right:2em;")
-  
+
 }
 
 
 # > Valgbokse -------------------------------------------------------------
 
 make_vaelg_emne <- function(size, placering, type, inputId1, inputId2, choicesOpt) {
- 
+
   column(size,
          box(
            width = NULL,
            solidHeader = TRUE,
            status = 'primary',
            title = span(paste0(placering,": Vælg ",type), icon("search")),
-           
-           column(4, 
+
+           column(4,
                   radioButtons(inputId1, label = "Udvælg",
                                choices = list("Paragraffer" = 1,
                                               "Lovgivninger" = 2)
@@ -163,11 +163,11 @@ make_vaelg_emne <- function(size, placering, type, inputId1, inputId2, choicesOp
            )
          )
   )
-  
+
 }
 
 make_vaelg_emne_alt <- function(size, placering, type, inputId, choices_2) {
-  
+
   column(size,
          box(
            width = NULL,
@@ -185,10 +185,10 @@ make_vaelg_emne_alt <- function(size, placering, type, inputId, choices_2) {
 }
 
 make_vaelg_emne_alt2 <- function(size, placering, type, inputId, choicesOpt) {
-  
+
   column(size,
          box(
-           width = NULL, 
+           width = NULL,
            solidHeader = TRUE,
            status = 'primary',
            title = span(paste0(placering,": Vælg ",type), icon("search")),
@@ -200,7 +200,7 @@ make_vaelg_emne_alt2 <- function(size, placering, type, inputId, choicesOpt) {
 }
 
 make_vaelg_instans <- function(size, placering, instanstype, inputId1, inputId2, kommuner, regioner) {
-  column(size, 
+  column(size,
     box(
       width = NULL,
       solidHeader = TRUE,
@@ -213,7 +213,7 @@ make_vaelg_instans <- function(size, placering, instanstype, inputId1, inputId2,
 }
 
 make_valg_aar <- function(size, placering, inputId) {
-  column(size, 
+  column(size,
      box(
         width = NULL,
         solidHeader = TRUE,
@@ -227,7 +227,7 @@ make_valg_aar <- function(size, placering, inputId) {
 }
 
 make_valg_kvartal <- function(size, placering, inputId) {
-  column(size, 
+  column(size,
          box(
            width = NULL,
            solidHeader = TRUE,
@@ -241,7 +241,7 @@ make_valg_kvartal <- function(size, placering, inputId) {
 }
 
 make_valg_periode <- function(size, placering, inputId1, inputId2) {
-  column(size, 
+  column(size,
          box(
            width = NULL,
            solidHeader = TRUE,
@@ -269,32 +269,32 @@ box(
   background = "light-blue",
   ...)
 }
-  
+
 # > Tilpas tabel ----------------------------------------------------------
 
 make_tilpas_tabellen <- function(...) {
-   graa_boks("Tilpas tabellen", 
-             FALSE, 
+   graa_boks("Tilpas tabellen",
+             FALSE,
              ...)
  }
 
 make_som_raekker <- function(inputId, prevalg) {
-               radioButtons(inputId, 'Som rækker', 
+               radioButtons(inputId, 'Som rækker',
                             choices = c('Kommune - herunder lovgivning' = 1,
                                         'Lovgivning - herunder kommune' = 2),
                             selected = prevalg)
 }
 
 make_som_kolonner <- function(inputId) {
-  
-  radioButtons(inputId, 'Som kolonner', 
+
+  radioButtons(inputId, 'Som kolonner',
                choices = c('Nøgletal - herunder år' = 1,
                            'År - herunder nøgletal' = 2))
 }
 
 make_vises_fodnoter <- function(inputId) {
                radioButtons(inputId, 'Skal der vises fodnoter?',
-                            choices = c('Ja' = TRUE, 
+                            choices = c('Ja' = TRUE,
                                         'Nej' = FALSE))
 }
 
@@ -328,23 +328,21 @@ box(title = "Eksport af graf som billede",
     )
 }
 
-source("./ui_functions.R", local = TRUE) # definerer andre filer. Jeg er ikke sikker på, at den skal stå her 
-
 # Header ---------------------------------------------
 
 header <- dashboardHeader(
                           #disable = TRUE,
-                          #title = "Ankestyrelsens talportal", 
+                          #title = "Ankestyrelsens talportal",
                           #titleWidth = 290,
                           titleWidth = 0,
                           tags$li(class = "dropdown", actionLink("header_knap_forside", "FORSIDE", icon = icon("home"), class = "my_class")),
-                          tags$li(class = "dropdown", actionLink("om_portalen", "OM TALPORTALEN / KONTAKT", icon = icon("info"), class = "my_class")),                          
+                          tags$li(class = "dropdown", actionLink("om_portalen", "OM TALPORTALEN / KONTAKT", icon = icon("info"), class = "my_class")),
                           tags$li(a(href = 'http://www.ast.dk', target="_blank",
                                             img(src = 'hvidtlogo2.png',
                                             title = "Link til ast.dk", height = "40px"),
                                             style = "padding-top:5px; padding-bottom:5px;"),
                                             class = "dropdown")
-                          #tags$li(class = "dropdown", actionLink("header_knap_forside", "Forside", icon = icon("home"), class = "my_class")), 
+                          #tags$li(class = "dropdown", actionLink("header_knap_forside", "Forside", icon = icon("home"), class = "my_class")),
                           #tags$li(class = "dropdown", actionLink("header_knap_sagsbehandlingstider", "Underside om sagsbehandlingstider", icon = icon("clock"), class = "my_class"))
                           #tags$li(class = "dropdown", actionLink("header_knap_sagsudfald", "Sagsudfald", icon = icon("percent"), class = "my_class")),
                           #tags$li(class = "dropdown", actionLink("om_portalen", "Om", class = "my_class"))
@@ -357,7 +355,7 @@ sidebar <- dashboardSidebar(
   collapsed = TRUE,
   width = 290,
   sidebarMenu(id = "tabs",
-              
+
      menuItem("Forside", tabName = "forside", icon = icon("home")),
      menuItem("Sagsudfald og omgørelsesprocenter", tabName = "Sagsudfald", icon = icon("percent"),
              menuSubItem("KSB-sager", tabName = "subitem6"),
@@ -368,7 +366,7 @@ sidebar <- dashboardSidebar(
              menuSubItem("Underretningssager", tabName = "Underretningssager"),
              menuSubItem("Tvangsbortadoption", tabName = "Tvangsbortadoption"),
              menuSubItem("Anbringelse", tabName = "Anbringelse")
-             )     
+             )
   )
 )
 
@@ -376,7 +374,7 @@ sidebar <- dashboardSidebar(
 
 body <-  dashboardBody(
   tags$head(tags$style(HTML(
-    '.myClass { 
+    '.myClass {
         font-size: 20px;
         line-height: 50px;
         text-align: left;
@@ -402,7 +400,7 @@ body <-  dashboardBody(
                       }"))
   ),
   tabItems(
-    
+
  # Forside -----------------------------------------------------------------
 
  tabItem(tabName = "forside",
@@ -417,7 +415,7 @@ body <-  dashboardBody(
                       solidHeader = TRUE,
                       p("Her kan du søge på alle paragraffer, emner og lovgivninger, som Ankestyrelsen behandler sager om. Du kan derefter gå direkte til den relevante statistik."),
                       pickerInput(
-                        inputId = 'soegning_forside', 
+                        inputId = 'soegning_forside',
                         label = '',
                         selected = NULL,
                         choices = lapply(split(as.character(Sagsemner_forside$Sagsemne), Sagsemner_forside$Omraade), as.list),
@@ -429,7 +427,7 @@ body <-  dashboardBody(
                           deselectAllText  = "Fravælg alle",
                           selectAllText  = "Vælg alle",
                           noneSelectedText = paste("Søg efter paragraf, emne eller lovgivning"),
-                          liveSearch = TRUE,                                                       
+                          liveSearch = TRUE,
                           liveSearchPlaceholder = paste("Søg efter paragraf, emne eller lovgivning"),
                           liveSearchStyle = "contains",
                           maxOptions = 1
@@ -447,7 +445,7 @@ body <-  dashboardBody(
                         fluidRow(
                           column(12, align="left",
                                  fluidRow(
-                                   column(4, 
+                                   column(4,
                                           KPI_boks_med_nogletal(titel = "Arbejdsmarkedets Erhvervssikring",
                                                                 tekst = html("Sager, hvor Arbejdsmarkedets Erhvervssikring (AES) har truffet den oprindelige afgørelse. Det er sager inden for arbejdsskadeloven."),
                                                                 inputid = "forside_ask_kpi_antal_sager",
@@ -459,7 +457,7 @@ body <-  dashboardBody(
                                                                 link_tekst = "Gå til arbejdsskadesager")
                                    ),
                                  )
-                          ),                       
+                          ),
                         )
                ),
                tabPanel("Kommunale sager",
@@ -488,7 +486,7 @@ body <-  dashboardBody(
                                                                  inputid = "mellemkommunal_id1",
                                                                  antal_sager = "666",
                                                                  subtitle = "antal sager i 2022",
-                                                                 link = "mellemkommunal_knap_forside_ny", 
+                                                                 link = "mellemkommunal_knap_forside_ny",
                                                                  link_tekst = "Gå til sager om mellemkommunal uenighed")
                          )
                         )
@@ -505,11 +503,11 @@ body <-  dashboardBody(
                                                        periode = "2022",
                                                        inputid2 = "forside_udk_kpi_omgor",
                                                        noegletal = "10,5 %",
-                                                       link = "UDK_knap_forside_ny", 
+                                                       link = "UDK_knap_forside_ny",
                                                        link_tekst = "Gå til Udbetaling Danmark-sager")
                           )
                         )
-                        
+
                ),
                tabPanel("Børne- og ungesager",
                         fluidRow(
@@ -524,21 +522,21 @@ body <-  dashboardBody(
                                                         inputid = "underretning_id1",
                                                         antal_sager = "1.373",
                                                         subtitle = "antal sager i 2022",
-                                                        link = "underretning_knap_forside_ny", 
+                                                        link = "underretning_knap_forside_ny",
                                                         link_tekst = "Gå til underretningssager")),
                           column(4, align = "left",
                                  KPI_boks_uden_nogletal(titel = "Tvangsmæssige foranstaltninger",
                                                         tekst = "Sager om klager over tvangsmæssige foranstaltninger overfor børn og unge under 18 år, hvor kommunernes børn og unge-udvalg har truffet afgørelse i 1. instans.
                                                                 <br>
                                                                 <br>
-                                                                Tvangsmæssige foranstaltninger kan bl.a. være anbringelsessager eller afgørelser der releterer sig til anbringelser. 
+                                                                Tvangsmæssige foranstaltninger kan bl.a. være anbringelsessager eller afgørelser der releterer sig til anbringelser.
                                                                 <br>
                                                                 <br>",
                                                         inputid = "anbringelse_id1",
                                                         antal_sager = "1.545",
                                                         subtitle = "antal sager i 2022",
-                                                        link = "anbringelse_knap_forside_ny", 
-                                                        link_tekst = "Gå til tvangsmæssige foranstaltninger")          
+                                                        link = "anbringelse_knap_forside_ny",
+                                                        link_tekst = "Gå til tvangsmæssige foranstaltninger")
                           ),
                           column(4, align = "left",
                                  KPI_boks_uden_nogletal(titel = "Sager om tvangsadoption (frigivelse)",
@@ -551,11 +549,11 @@ body <-  dashboardBody(
                                                         inputid = "tvang_id1",
                                                         antal_sager = "45",
                                                         subtitle = "antal sager i 2022",
-                                                        link = "tvang_knap_forside_ny", 
-                                                        link_tekst = "Gå til sager om tvangsadoption")                             
+                                                        link = "tvang_knap_forside_ny",
+                                                        link_tekst = "Gå til sager om tvangsadoption")
                           )
                         )
-               ),              
+               ),
                tabPanel("Tilsynssager",
                         fluidRow(
                           column(4,
@@ -568,7 +566,7 @@ body <-  dashboardBody(
                                                         inputid = "forside_tilsyn_kpi_antal_sager",
                                                         antal_sager = "1.408",
                                                         subtitle = "antal sager i  2022",
-                                                        link = "tilsyn_knap_forside", 
+                                                        link = "tilsyn_knap_forside",
                                                         link_tekst = "Gå til tilsynssager")
                           )
                         )
@@ -584,10 +582,10 @@ body <-  dashboardBody(
                               p("Ankestyrelsen behandler også sager om de sociale tilsyn, arbejdsløshedsdagpenge m.v. Statistik om disse sager er endnu ikke på talportalen. Se underside om publikationer på ast.dk eller kontakt os på statistik@ast.dk"),
                               tags$a(href="https://ast.dk/publikationer/emneopdelte-publikationer", "Publikationer", target="_blank")
                             )
-                            
+
                         )
-                        
-                        
+
+
                         )
              )
              )
@@ -612,8 +610,8 @@ body <-  dashboardBody(
                                             #height = 145,
                                             status = 'primary',
                                             title = span("1: Vælg lovgivning", icon("search")),
-                                            
-                                            column(4, 
+
+                                            column(4,
                                                    radioButtons("lov_el_paragraf", label = "Udvælg",
                                                                 choices = list("Paragraffer" = 1,
                                                                                "Lovgivninger" = 2)
@@ -621,18 +619,18 @@ body <-  dashboardBody(
                                                    ),
                                             column(8,
                                             pickerInput(
-                                              inputId = 'in_lovgivning', 
+                                              inputId = 'in_lovgivning',
                                               label = 'Lovgivning',
                                               choices = lapply(split(as.character(Sagsemner$Sagsemne), Sagsemner$Lovgivning), as.list),
                                               multiple=TRUE,
                                               options = inputpicker_options("lovgivning", "lovgivning, navn eller paragraf", "contains"),
                                               choicesOpt = list(tokens = Sagsemner$X
-                                                                
+
                                                                 #subtext = c('Indgår i danmarkskortet - Børnehandicap','Indgår i danmarkskortet - Børnehandicap')
                                               )
-                                              
+
                                             )
-                                            
+
                                           )
                                    )
                                    ),
@@ -645,11 +643,11 @@ body <-  dashboardBody(
                                          # title = '2: Vælg kommune',
                                          title = span("2: Vælg kommune", icon("search")),
                                          pickerInput(
-                                           inputId = 'in_kommune', 
+                                           inputId = 'in_kommune',
                                            #label = 'Kommune',
                                            choices = lapply(split(as.character(kommuner$Kommune), kommuner$Region), as.list), # laver opdeling af kommuner på regioner
-                                           #choices = lapply(split(glue(as.character(kommuner$Kommune), "=",as.character(kommuner$Kommune)), kommuner$Region), as.list), 
-                                           multiple=TRUE, 
+                                           #choices = lapply(split(glue(as.character(kommuner$Kommune), "=",as.character(kommuner$Kommune)), kommuner$Region), as.list),
+                                           multiple=TRUE,
                                            #selected = list('Københavns Kommune', 'Frederiksberg Kommune'),
                                            options = inputpicker_options("kommune", "kommune eller region", "startsWith"),
                                            choicesOpt = list(tokens = kommuner$Region
@@ -658,22 +656,22 @@ body <-  dashboardBody(
                                            ),
                                          materialSwitch(
                                            inputId = "in_landstotal",
-                                           label = "Tilføj landstotal", 
+                                           label = "Tilføj landstotal",
                                            value = FALSE,
                                            status = "primary"
-                                         
+
                                          )
                                          # ,
                                         #  verbatimTextOutput("procent_kolonner_test"),
                                          # verbatimTextOutput("mangler_der_data")
                                          )
                                   )
-                                  
-                                 
-                                              
+
+
+
 
                                  ,
-                                 
+
                                  column(4,
                                   box(
                                     width = NULL,
@@ -681,31 +679,31 @@ body <-  dashboardBody(
                                     # title = '3: Vælg periode',
                                     title = span('3: Vælg periode', icon("search")),
                                     status = 'primary',
-                                   column(4, 
+                                   column(4,
                                         radioButtons("aar_el_kvartal", label = "Periode",
                                                      choices = list("År" = 1,
                                                                     "Kvartal" = 2)
                                         )
-                                        
+
                                         # radioGroupButtons(
                                         #   inputId = "aar_el_kvartal",
-                                        #   label = "Periode", 
+                                        #   label = "Periode",
                                         #   choices = list("År" = 1,
                                         #                            "Kvartal" = 2),
                                         #   status = "primary"
                                         # )
-                                        
-                                   
-                                        
-                                        
+
+
+
+
                                  ),
-                                 
-                                 
+
+
                                   column(8,
-                                         
-                                         pickerInput('in_periode', 'Periode', 
-                                                     choices = "",                                                    
-                                                     multiple=TRUE, 
+
+                                         pickerInput('in_periode', 'Periode',
+                                                     choices = "",
+                                                     multiple=TRUE,
                                                      options = inputpicker_options("periode", "år eller kvartal", "contains")
                                                     )
                                         )#,
@@ -713,9 +711,9 @@ body <-  dashboardBody(
                                  # p(html("Senest opdateret: <br>
                                  #   År: 2020, Kvartal: 2. kvt. 2021")))
                                   )
-                                 
-                                 
-                                 
+
+
+
                                  )
                                        )
                                  ,
@@ -729,9 +727,9 @@ body <-  dashboardBody(
                                           uiOutput("download_stor"),
                                           uiOutput("for_mange_valgt")
                                           )
-                                 
+
                                  # herfra
-                                 
+
                                  # fluidRow(
                                  # column(4,
                                  #        # box(
@@ -743,12 +741,12 @@ body <-  dashboardBody(
                                  #        width = NULL,
                                  #        #span(h4("Antal sager"), icon("question")),
                                  #        #h2(""),
-                                 #        
+                                 #
                                  #        h4(HTML("Antal sager  ", "<font size='2'>",
-                                 #                as.character(actionLink(inputId = "show", 
-                                 #                                        label = "", 
+                                 #                as.character(actionLink(inputId = "show",
+                                 #                                        label = "",
                                  #                                        icon = icon("info"))), "</font>")),
-                                 #        
+                                 #
                                  #        #actionButton("show", "Info"),
                                  #        checkboxGroupInput("antal_sager1",
                                  #                           label = NULL,
@@ -759,18 +757,18 @@ body <-  dashboardBody(
                                  #                 class = 'uncle',
                                  #        checkboxGroupInput("antal_sager2",
                                  #                           label = NULL,
-                                 #                           #label = h4("Realitetsbehandlede sager"), 
-                                 #                           choices = list("Stadfæstede sager" = "Stadfæstede sager", 
+                                 #                           #label = h4("Realitetsbehandlede sager"),
+                                 #                           choices = list("Stadfæstede sager" = "Stadfæstede sager",
                                  #                                          "Ændrede/ophævede sager" = "Ændrede/ophævede sager",
                                  #                                          "Hjemviste sager" = "Hjemviste sager")
                                  #                           )
-                                 #        
+                                 #
                                  #        )
                                  #        #bsTooltip(id = "nogletal_info2", "Omgørelsesprocenten er antallet af hjemviste og ændrede sager set i forhold til alle realitetsbehandlede sager.", "bottom", options = NULL)
                                  #        ,
                                  #        checkboxGroupInput("antal_sager3",
                                  #                           label = NULL,
-                                 #                           #label = h4("Afviste sager"), 
+                                 #                           #label = h4("Afviste sager"),
                                  #                           choices = list("Afviste sager" = "Afviste sager")
                                  #        )
                                  #        # ,
@@ -786,8 +784,8 @@ body <-  dashboardBody(
                                  #        # h4("Nøgletal"),
                                  #        # h2(""),
                                  #        h4(HTML("Nøgletal  ", "<font size='2'>",
-                                 #                as.character(actionLink(inputId = "nogletal", 
-                                 #                                        label = "", 
+                                 #                as.character(actionLink(inputId = "nogletal",
+                                 #                                        label = "",
                                  #                                        icon = icon("info"))), "</font>")),
                                  #        #actionButton("nogletal", "Info"),
                                  #        checkboxGroupInput("nogletal1",
@@ -815,7 +813,7 @@ body <-  dashboardBody(
                                  # ))
                                  # ,
                                  # column(4,
-                                 # 
+                                 #
                                  #        # textOutput("selected_var"),
                                  #        # textOutput("selected_var_antal_raekke")
                                  #        #h4("Info"),
@@ -825,22 +823,22 @@ body <-  dashboardBody(
                                  #        #actionButton("refresh", "Nulstil filtre")
                                  #        #actionButton("show", "Om antal sager"),
                                  #        #actionButton("nogletal", "Om nøgletal"),
-                                 #        
+                                 #
                                  #        )
                                  # )
-                                 
+
                                  # hertil
-                                 
-                                 
+
+
                                  )
-                                 
-                                  
+
+
                              )
-                    
+
                     )
-                  
-                  , fluidRow(  
-                      column(12, 
+
+                  , fluidRow(
+                      column(12,
                         tabBox(
                                id = 'ksb_tabs',
                                title = tagList( " "),
@@ -848,7 +846,7 @@ body <-  dashboardBody(
                                   tabPanel("Tabel",
                                            fluidPage(
                                              column(10,
-                                                    
+
                                                     fluidRow(
                                                        box(
                                                        width = NULL,
@@ -865,12 +863,12 @@ body <-  dashboardBody(
                                                                #width = NULL,
                                                                #span(h4("Antal sager"), icon("question")),
                                                                #h2(""),
-                                                               
+
                                                                h4(HTML("Antal sager", "<font size='2'>",
-                                                                       as.character(actionLink(inputId = "show", 
-                                                                                               label = "", 
+                                                                       as.character(actionLink(inputId = "show",
+                                                                                               label = "",
                                                                                                icon = icon("info"))), "</font>")),
-                                                               
+
                                                                #actionButton("show", "Info"),
                                                                checkboxGroupInput("antal_sager1",
                                                                                   label = NULL,
@@ -881,18 +879,18 @@ body <-  dashboardBody(
                                                                         class = 'uncle',
                                                                         checkboxGroupInput("antal_sager2",
                                                                                            label = NULL,
-                                                                                           #label = h4("Realitetsbehandlede sager"), 
-                                                                                           choices = list("Stadfæstede sager" = "Stadfæstede sager", 
+                                                                                           #label = h4("Realitetsbehandlede sager"),
+                                                                                           choices = list("Stadfæstede sager" = "Stadfæstede sager",
                                                                                                           "Ændrede/ophævede sager" = "Ændrede/ophævede sager",
                                                                                                           "Hjemviste sager" = "Hjemviste sager")
                                                                         )
-                                                                        
+
                                                                )
                                                                #bsTooltip(id = "nogletal_info2", "Omgørelsesprocenten er antallet af hjemviste og ændrede sager set i forhold til alle realitetsbehandlede sager.", "bottom", options = NULL)
                                                                ,
                                                                checkboxGroupInput("antal_sager3",
                                                                                   label = NULL,
-                                                                                  #label = h4("Afviste sager"), 
+                                                                                  #label = h4("Afviste sager"),
                                                                                   choices = list("Afviste sager" = "Afviste sager")
                                                                )
                                                                # ,
@@ -908,8 +906,8 @@ body <-  dashboardBody(
                                                                # h4("Nøgletal"),
                                                                # h2(""),
                                                                h4(HTML("Nøgletal  ", "<font size='2'>",
-                                                                       as.character(actionLink(inputId = "nogletal", 
-                                                                                               label = "", 
+                                                                       as.character(actionLink(inputId = "nogletal",
+                                                                                               label = "",
                                                                                                icon = icon("info"))), "</font>")),
                                                                #actionButton("nogletal", "Info"),
                                                                checkboxGroupInput("nogletal1",
@@ -935,23 +933,23 @@ body <-  dashboardBody(
                                                                # verbatimTextOutput("nogletal_valgte_32_periode")
                                                                #bsTooltip(id = "nogletal_info", "Omgørelsesprocenten er antallet af hjemviste og ændrede sager set i forhold til alle realitetsbehandlede sager.", "bottom", options = NULL)
                                                              #)
-                                                             
+
                                                       )
                                                       # column(4,
                                                       #        h4(HTML("Sagsbehandlingstider  ", "<font size='2'>",
-                                                      #                as.character(actionLink(inputId = "sagsbehandlingstider", 
-                                                      #                                        label = "", 
+                                                      #                as.character(actionLink(inputId = "sagsbehandlingstider",
+                                                      #                                        label = "",
                                                       #                                        icon = icon("info"))), "</font>")),
                                                       #        checkboxGroupInput("sagsbehandlingstider1",
                                                       #                           label = NULL,
                                                       #                           choices = list("Sagsbehandlingstider (antal uger)" = "Sagsbehandlingstider")
-                                                      #                           
-                                                      #                           
+                                                      #
+                                                      #
                                                       #        )
                                                       #        )
-                                                         
+
                                                              )
-                                                      
+
                                                     ),
                                                     fluidRow(
                                                       column(12,
@@ -986,10 +984,10 @@ body <-  dashboardBody(
                                                     #     # actionButton("bt4", "Download data (Excel el. CSV)")
                                                     # ),
                                                     graa_boks("Tilpas tabellen", FALSE,
-                                                              radioButtons('in_pivot', 'Som kolonner', 
+                                                              radioButtons('in_pivot', 'Som kolonner',
                                                                            choices = c('Nøgletal - herunder år' = 1,
                                                                                        'År - herunder nøgletal' = 2)),
-                                                              radioButtons('in_pivot2', 'Som rækker', 
+                                                              radioButtons('in_pivot2', 'Som rækker',
                                                                            choices = c('Kommune - herunder lovgivning' = 2,
                                                                                        'Lovgivning - herunder kommune' = 1)
                                                               ),
@@ -1003,11 +1001,11 @@ body <-  dashboardBody(
                                                     )
                                                     )
                                                     )
-                                             
-                                             
-                                             
+
+
+
                                            # ,
-                                           # 
+                                           #
                                            # fluidRow(
                                            #   column(4,
                                                     # box(
@@ -1019,12 +1017,12 @@ body <-  dashboardBody(
                                                     #   width = NULL,
                                                     #   #span(h4("Antal sager"), icon("question")),
                                                     #   #h2(""),
-                                                    #   
+                                                    #
                                                     #   h4(HTML("Antal sager  ", "<font size='2'>",
-                                                    #           as.character(actionLink(inputId = "show", 
-                                                    #                                   label = "", 
+                                                    #           as.character(actionLink(inputId = "show",
+                                                    #                                   label = "",
                                                     #                                   icon = icon("info"))), "</font>")),
-                                                    #   
+                                                    #
                                                     #   #actionButton("show", "Info"),
                                                     #   checkboxGroupInput("antal_sager1",
                                                     #                      label = NULL,
@@ -1035,27 +1033,27 @@ body <-  dashboardBody(
                                                     #            class = 'uncle',
                                                     #            checkboxGroupInput("antal_sager2",
                                                     #                               label = NULL,
-                                                    #                               #label = h4("Realitetsbehandlede sager"), 
-                                                    #                               choices = list("Stadfæstede sager" = "Stadfæstede sager", 
+                                                    #                               #label = h4("Realitetsbehandlede sager"),
+                                                    #                               choices = list("Stadfæstede sager" = "Stadfæstede sager",
                                                     #                                              "Ændrede/ophævede sager" = "Ændrede/ophævede sager",
                                                     #                                              "Hjemviste sager" = "Hjemviste sager")
                                                     #            )
-                                                    #            
+                                                    #
                                                     #   )
                                                     #   #bsTooltip(id = "nogletal_info2", "Omgørelsesprocenten er antallet af hjemviste og ændrede sager set i forhold til alle realitetsbehandlede sager.", "bottom", options = NULL)
                                                     #   ,
                                                     #   checkboxGroupInput("antal_sager3",
                                                     #                      label = NULL,
-                                                    #                      #label = h4("Afviste sager"), 
+                                                    #                      #label = h4("Afviste sager"),
                                                     #                      choices = list("Afviste sager" = "Afviste sager")
                                                     #   )
                                                     #   # ,
                                                     #   # verbatimTextOutput("antal_sager_valgte"),
                                                     #   # verbatimTextOutput("antal_sager_valgte_periode")
                                                     # )
-                                                    
-                                                    
-                                                    
+
+
+
                                              # ),
                                              # column(4,
                                                     # box(
@@ -1065,8 +1063,8 @@ body <-  dashboardBody(
                                                     #   # h4("Nøgletal"),
                                                     #   # h2(""),
                                                     #   h4(HTML("Nøgletal  ", "<font size='2'>",
-                                                    #           as.character(actionLink(inputId = "nogletal", 
-                                                    #                                   label = "", 
+                                                    #           as.character(actionLink(inputId = "nogletal",
+                                                    #                                   label = "",
                                                     #                                   icon = icon("info"))), "</font>")),
                                                     #   #actionButton("nogletal", "Info"),
                                                     #   checkboxGroupInput("nogletal1",
@@ -1092,13 +1090,13 @@ body <-  dashboardBody(
                                                     #   # verbatimTextOutput("nogletal_valgte_32_periode")
                                                     #   #bsTooltip(id = "nogletal_info", "Omgørelsesprocenten er antallet af hjemviste og ændrede sager set i forhold til alle realitetsbehandlede sager.", "bottom", options = NULL)
                                                     # )
-                                                    
-                                                    
-                                                    
+
+
+
                                                     # )
                                              #,
                                              #column(4,
-                                                    
+
                                                     # textOutput("selected_var"),
                                                     # textOutput("selected_var_antal_raekke")
                                                     #h4("Info"),
@@ -1108,23 +1106,23 @@ body <-  dashboardBody(
                                                     #actionButton("refresh", "Nulstil filtre")
                                                     #actionButton("show", "Om antal sager"),
                                                     #actionButton("nogletal", "Om nøgletal"),
-                                                    
+
                                              #)
                                            # ),
-                                           
-                                           
-                                           
-                                           
+
+
+
+
                                            # uiOutput("moreControls"),
-                                           
-                                           
+
+
                                            # fluidRow(
-                                           #   column(4, 
+                                           #   column(4,
                                            #          graa_boks("Tilpas tabellen", TRUE,
-                                           #                   radioButtons('in_pivot', 'Som kolonner', 
+                                           #                   radioButtons('in_pivot', 'Som kolonner',
                                            #                                choices = c('Nøgletal - herunder år' = 1,
                                            #                                            'År - herunder nøgletal' = 2)),
-                                           #                   radioButtons('in_pivot2', 'Som rækker', 
+                                           #                   radioButtons('in_pivot2', 'Som rækker',
                                            #                                choices = c('Kommune - herunder lovgivning' = 1,
                                            #                                            'Lovgivning - herunder kommune' = 2)
                                            #                   ),
@@ -1138,22 +1136,22 @@ body <-  dashboardBody(
                                            #          )
                                            #   )
                                            #   ,
-                                           #   column(4, 
+                                           #   column(4,
                                            #          box(title = "Tilføj til tabellen",
                                            #              collapsible = TRUE,
                                            #              collapsed = TRUE,
                                            #              width = NULL,
                                            #              status = "danger",
                                            #              solidHeader = TRUE,
-                                           #              
-                                           #              pickerInput('benchmark_test', 'Sammenlign med', 
+                                           #
+                                           #              pickerInput('benchmark_test', 'Sammenlign med',
                                            #                          choices= list(
                                            #                            'Gennemsnit' = c('Landsgennemsnit','Region midt','Region syd', 'Region midt-nord'),
                                            #                            'Alle kommmuner i:' = c('Region midt',
                                            #                                                    'Region syd',
                                            #                                                    'Region midt-nord')
                                            #                          ),
-                                           #                          multiple=TRUE, 
+                                           #                          multiple=TRUE,
                                            #                          #selectize=TRUE,
                                            #                          selected = list('2017','2018','2019'),
                                            #                          options = inputpicker_options("sammenligning", "region", "contains")
@@ -1161,12 +1159,12 @@ body <-  dashboardBody(
                                            #              radioButtons('farver', 'Tilføj farver til nøgletal',
                                            #                           choices = c('Ja', 'Nej'),
                                            #                           selected = 'Nej')
-                                           #              
-                                           #              
-                                           #              
+                                           #
+                                           #
+                                           #
                                            #          )),
                                            #   column(4,
-                                           #          box(title = "Eksport af tabel/data", 
+                                           #          box(title = "Eksport af tabel/data",
                                            #              width = NULL,
                                            #              status = "danger",
                                            #              solidHeader = TRUE,
@@ -1178,13 +1176,13 @@ body <-  dashboardBody(
                                            #          )
                                            #   )
                                            #  )
-                                           
-                                           
+
+
                                            # her
-                                           
-                                           
-                                  
-                                  # fluidRow(         
+
+
+
+                                  # fluidRow(
                                   #      column(10,
                                                 # align = "center",
                                                 # actionButton("export", "Eksport tabel/data"),
@@ -1193,10 +1191,10 @@ body <-  dashboardBody(
                                                 # h4(""),
                                                 # withSpinner(gt_output('table2'), type = 8, proxy.height = 150)
                                         #      )
-                                       
+
                                        # ,
-                                       # 
-                                       # 
+                                       #
+                                       #
                                        # column(2,
                                        #        # uiOutput("moreControls"),
                                               # # box(title = "Eksport af tabel/data",
@@ -1217,10 +1215,10 @@ body <-  dashboardBody(
                                               # #     # actionButton("bt4", "Download data (Excel el. CSV)")
                                               # # ),
                                               # graa_boks("Tilpas tabellen", FALSE,
-                                              #           radioButtons('in_pivot', 'Som kolonner', 
+                                              #           radioButtons('in_pivot', 'Som kolonner',
                                               #                        choices = c('Nøgletal - herunder år' = 1,
                                               #                                    'År - herunder nøgletal' = 2)),
-                                              #           radioButtons('in_pivot2', 'Som rækker', 
+                                              #           radioButtons('in_pivot2', 'Som rækker',
                                               #                        choices = c('Kommune - herunder lovgivning' = 2,
                                               #                                    'Lovgivning - herunder kommune' = 1)
                                               #           ),
@@ -1232,9 +1230,9 @@ body <-  dashboardBody(
                                               #           # ,
                                               #           # actionButton("show", "Show modal dialog")
                                               # )
-                                  #             
+                                  #
                                   #             )
-                                  # 
+                                  #
                                   # )
                                   # , fluidRow(
                                   #   # (column(12, gt_output('total_tabel')))
@@ -1263,16 +1261,16 @@ body <-  dashboardBody(
                                                                   #options = inputpicker_options("sammenligning", "region", "contains")
                                                       ),
 
-                                         
-                                         
-                                         
-                                         
-                                         
-                                         
+
+
+
+
+
+
                                          #plotOutput("plot_omg"),
                                          htmlOutput("Vaelg_mindst_to_perioder"),
                                          uiOutput("sized_plot"),
-                                         
+
                                   ),
                                   column(3,
                                          uiOutput("advarsel_ask"),
@@ -1288,14 +1286,14 @@ body <-  dashboardBody(
                                            #                    choices = c('Alle i samme graf' = 1,
                                            #                                'Opdelte grafer' = 2)),
                                            # #uiOutput("in_pivot_3_x"),
-                                           # radioButtons('in_pivot2_4', 'Lovgivning', 
+                                           # radioButtons('in_pivot2_4', 'Lovgivning',
                                            #                   choices = c('Alle i samme graf','Opdelte grafer'))
                                            ),
                                            box(title = "Eksport af graf som billede",
                                                width = NULL,
                                                status = "primary",
                                                solidHeader = TRUE,
-                                           downloadButton("downloadData_2_alt", "Hent PNG-fil")                                           
+                                           downloadButton("downloadData_2_alt", "Hent PNG-fil")
                                          )
                                          )
                                 )
@@ -1346,16 +1344,16 @@ tabItem(tabName = "subitem7",
                                                       choicesOpt = list(
                                                       subtext = Sagsemner_udk$Paragraffer
                                                       )
-                                                      
+
                                                     )
                                                     #,
                                                     #verbatimTextOutput("udk_test_samling_2"),
                                                     #verbatimTextOutput("udk_test_af_dropdown2")
-                                                    
-                                                    
-                                                    
-                                                    
-                                                    
+
+
+
+
+
 
                                              )
                                            )),
@@ -1636,10 +1634,10 @@ tabItem(tabName = "subitem7",
                                                 #        checkboxGroupInput("udk_sagsbehandlingstider1",
                                                 #                           label = NULL,
                                                 #                           choices = list("Sagsbehandlingstider (antal uger)" = "Sagsbehandlingstid")
-                                                # 
-                                                # 
+                                                #
+                                                #
                                                 #        )
-                                                # 
+                                                #
                                                 # )
                                               )
 
@@ -1909,10 +1907,10 @@ tabItem(tabName = "subitem10",
                                                 #        checkboxGroupInput("ask_sagsbehandlingstider1",
                                                 #                           label = NULL,
                                                 #                           choices = list("Gns. sagsbehandlingstid (antal uger)" = "Sagsbehandlingstid")
-                                                # 
-                                                # 
+                                                #
+                                                #
                                                 #        )
-                                                # 
+                                                #
                                                 # )
                                               )
 
@@ -1926,7 +1924,7 @@ tabItem(tabName = "subitem10",
                                                      #,
                                                      #uiOutput("ask_note_boks"),
                                                      #verbatimTextOutput("kommentarer_rownames")
-                                                     
+
                                                      #uiOutput("download_stor"),
                                                      #uiOutput("for_mange_valgt"),
                                               )
@@ -2054,7 +2052,7 @@ tabItem(tabName = "Tilsynssager",
                              #make_valg_kvartal(4, 3, "tilsyn_periode")
                            ),
                           fluidRow(
-                            column(12, 
+                            column(12,
                                    align = "right",
                                    make_nulstil_knap("nulstil_filtre_tilsyn")
                             )
@@ -2072,24 +2070,24 @@ tabItem(tabName = "Tilsynssager",
                                 fluidPage(
                                   column(10,
                                          fluidRow(
-                                         make_fyldt_blaa_boks(      
+                                         make_fyldt_blaa_boks(
                                            column(4,
                                                   h4(HTML("Antal sager", "<font size='2'>",
-                                                          as.character(actionLink(inputId = "info_antal_sager_tilsyn", 
-                                                                                  label = "", 
+                                                          as.character(actionLink(inputId = "info_antal_sager_tilsyn",
+                                                                                  label = "",
                                                                                   icon = icon("info"))), "</font>")),
                                                   checkboxGroupInput("antal_sager1_tilsyn",
                                                                      label = NULL,
                                                                      choices = list("Behandlede sager i alt" = 'Behandlede sager i alt'),
                                                                      selected = 'Behandlede sager i alt'
-                                                                     
+
                                                   ),
                                                   tags$div(id = 'my_div2_tilsyn',
                                                            class = 'uncle',
                                                            checkboxGroupInput("antal_sager2_tilsyn",
                                                                               label = NULL,
                                                                               choices = list("Udtalelse/godkendelse (§ 50)" = "Udtalelse",
-                                                                                             "Afvisning (§ 48 a)" = "Afvisning", 
+                                                                                             "Afvisning (§ 48 a)" = "Afvisning",
                                                                                              "Sanktion (§ 50 d-51)" = "Sanktion",
                                                                                              "Forhåndsudtalelse" = "Forhåndsudtalelse",
                                                                                              "Fogedsag" = "Fogedsag")
@@ -2101,7 +2099,7 @@ tabItem(tabName = "Tilsynssager",
                                                                        choices = list("Ikke-behandlede sager" = "Sag ikke behandlet")
                                                   )
                                            )
-                                          ) 
+                                          )
                                          ),
                                          fluidRow(
                                            column(12,
@@ -2164,7 +2162,7 @@ tabItem(tabName = "Mellemkommunal",
                              #make_valg_kvartal(4, 3, "mellemk_periode")
                            ),
                            fluidRow(
-                             column(12, 
+                             column(12,
                                     align = "right",
                                     make_nulstil_knap("nulstil_filtre_mellemk")
                              )
@@ -2182,12 +2180,12 @@ tabItem(tabName = "Mellemkommunal",
                             fluidPage(
                               column(10,
                                      fluidRow(
-                                       make_fyldt_blaa_boks(      
+                                       make_fyldt_blaa_boks(
                                          column(4,
                                                 h4(HTML("Antal sager")
                                                         #, "<font size='2'>",
-                                                        #as.character(actionLink(inputId = "info_antal_sager_mellemk", 
-                                                        #                        label = "", 
+                                                        #as.character(actionLink(inputId = "info_antal_sager_mellemk",
+                                                        #                        label = "",
                                                         #                        icon = icon("info"))), "</font>"
                                                         #)
                                                    ),
@@ -2201,7 +2199,7 @@ tabItem(tabName = "Mellemkommunal",
                                                 #          checkboxGroupInput("antal_sager2_mellemk",
                                                 #                             label = NULL,
                                                 #                             choices = list("Henlagt" = "Henlagt",
-                                                #                                            "Bortfald" = "Bortfald", 
+                                                #                                            "Bortfald" = "Bortfald",
                                                 #                                            "Realitetsbehandlet" = "Realitetsbehandlet")
                                                 #          )
                                                 # )
@@ -2211,7 +2209,7 @@ tabItem(tabName = "Mellemkommunal",
                                                                    choices = list("Ikke-behandlede sager" = "Ikke-behandlede sager")
                                                 )
                                          )
-                                       ) 
+                                       )
                                      ),
                                      fluidRow(
                                        column(12,
@@ -2271,9 +2269,9 @@ tabItem(tabName = "Underretningssager",
                              #make_vaelg_instans(6, 1, "kommune", "underretning_kommune", "underretning_landstotal", kommuner$fuldt_navn, kommuner$Region),
                              #make_valg_periode(6, 1, "underretning_aar_eller_kvartal", "underretning_periode")
                              column(4,
-                             box(title = "1. Lovgrundlag", 
-                                 width = NULL, 
-                                 solidHeader = TRUE, 
+                             box(title = "1. Lovgrundlag",
+                                 width = NULL,
+                                 solidHeader = TRUE,
                                  status = "danger",
                                  selectInput("underretning_lovgrundlag_valgt",
                                              "Valgt lovgrundlag:",
@@ -2282,9 +2280,9 @@ tabItem(tabName = "Underretningssager",
                                  )
                              )),
                              column(4,
-                             box(title = "2. Kommune", 
-                                 width = NULL, 
-                                 solidHeader = TRUE, 
+                             box(title = "2. Kommune",
+                                 width = NULL,
+                                 solidHeader = TRUE,
                                  status = "danger",
                                  selectInput("underretning_kommune_valgt",
                                              "Valgt kommune:",
@@ -2294,7 +2292,7 @@ tabItem(tabName = "Underretningssager",
                              make_valg_aar(4, 3, "underretning_periode")
                            ),
                            fluidRow(
-                             column(12, 
+                             column(12,
                                     align = "right",
                                     make_nulstil_knap("nulstil_filtre_underretning")
                              )
@@ -2302,9 +2300,9 @@ tabItem(tabName = "Underretningssager",
                            fluidRow(
                              align = "center",
                              uiOutput("ikke_nok_valg_underretning")
-                           )                           
+                           )
                  ),
-                 
+
                  tabBox(
                    id = "underretningssager_tabs",
                    title = tagList( " "),
@@ -2313,11 +2311,11 @@ tabItem(tabName = "Underretningssager",
                             fluidPage(
                               column(10,
                                      fluidRow(
-                                       make_fyldt_blaa_boks(      
+                                       make_fyldt_blaa_boks(
                                          column(4,
                                                 h4(HTML("Antal sager", "<font size='2'>",
-                                                        as.character(actionLink(inputId = "info_antal_sager_underretning", 
-                                                                                label = "", 
+                                                        as.character(actionLink(inputId = "info_antal_sager_underretning",
+                                                                                label = "",
                                                                                 icon = icon("info"))), "</font>")),
                                                 checkboxGroupInput("antal_sager1_underretning",
                                                                    label = NULL,
@@ -2330,7 +2328,7 @@ tabItem(tabName = "Underretningssager",
                                                  #          checkboxGroupInput("antal_sager2_underretning",
                                                  #                             label = NULL,
                                                  #                             choices = list("Mødebehandlet" = "Mødebehandlet",
-                                                 #                                            "Ikke-mødebehandlet" = "Ikke.mødebehandlet") 
+                                                 #                                            "Ikke-mødebehandlet" = "Ikke.mødebehandlet")
                                                  #          )
                                                  # )
                                                 # ,
@@ -2339,7 +2337,7 @@ tabItem(tabName = "Underretningssager",
                                                 #                   choices = list("Ikke-behandlede sager" = "Ikke.realitetsbehandlet")
                                                 #)
                                          )
-                                       ) 
+                                       )
                                      ),
                                      fluidRow(
                                        column(12,
@@ -2384,17 +2382,17 @@ tabItem(tabName = "Underretningssager",
                    #          )
                    # )
                  )
-                 
-                 
-                 
-                 
-                 
-                 
-                 
-                 
-                 
-          
-          )          
+
+
+
+
+
+
+
+
+
+
+          )
         )
 ),
 
@@ -2414,7 +2412,7 @@ tabItem(tabName = "Tvangsbortadoption",
                              make_valg_aar(6, 2, "tvang_periode")
                            ),
                            fluidRow(
-                             column(12, 
+                             column(12,
                                     align = "right",
                                     make_nulstil_knap("nulstil_filtre_tvang")
                              )
@@ -2432,11 +2430,11 @@ tabItem(tabName = "Tvangsbortadoption",
                             fluidPage(
                               column(10,
                                      fluidRow(
-                                       make_fyldt_blaa_boks(      
+                                       make_fyldt_blaa_boks(
                                          column(4,
                                                 h4(HTML("Antal sager", "<font size='2'>",
-                                                        as.character(actionLink(inputId = "info_antal_sager_tvang", 
-                                                                                label = "", 
+                                                        as.character(actionLink(inputId = "info_antal_sager_tvang",
+                                                                                label = "",
                                                                                 icon = icon("info"))), "</font>")),
                                                 checkboxGroupInput("antal_sager1_tvang",
                                                                    label = NULL,
@@ -2448,7 +2446,7 @@ tabItem(tabName = "Tvangsbortadoption",
                                                                    selected = 'Tvangsbortadoption'
                                                 )
                                          )
-                                       ) 
+                                       )
                                      ),
                                      fluidRow(
                                        column(12,
@@ -2468,7 +2466,7 @@ tabItem(tabName = "Tvangsbortadoption",
                             )
                    )
                    # ,
-                   # 
+                   #
                    # tabPanel("Graf",
                    #          fluidRow(
                    #            column(9,
@@ -2494,7 +2492,7 @@ tabItem(tabName = "Tvangsbortadoption",
                    #          )
                    # )
                  )
-                 
+
           )
         )
 ),
@@ -2515,7 +2513,7 @@ tabItem(tabName = "Anbringelse",
                              make_valg_aar(6, 2, "anbringelse_periode")
                            ),
                            fluidRow(
-                             column(12, 
+                             column(12,
                                     align = "right",
                                     make_nulstil_knap("nulstil_filtre_anbringelse")
                              )
@@ -2533,11 +2531,11 @@ tabItem(tabName = "Anbringelse",
                             fluidPage(
                               column(10,
                                      # fluidRow(
-                                     #   make_fyldt_blaa_boks(      
+                                     #   make_fyldt_blaa_boks(
                                      #     column(4,
                                      #            h4(HTML("Antal sager", "<font size='2'>",
-                                     #                    as.character(actionLink(inputId = "info_antal_sager_anbringelse", 
-                                     #                                            label = "", 
+                                     #                    as.character(actionLink(inputId = "info_antal_sager_anbringelse",
+                                     #                                            label = "",
                                      #                                            icon = icon("info"))), "</font>")),
                                      #            checkboxGroupInput("antal_sager1_anbringelse",
                                      #                               label = NULL,
@@ -2548,7 +2546,7 @@ tabItem(tabName = "Anbringelse",
                                      #                               selected = 'Mødebehandlet'
                                      #            )
                                      #     )
-                                     #   ) 
+                                     #   )
                                      # ),
                                      fluidRow(
                                        column(12,
@@ -2590,8 +2588,8 @@ tabItem(tabName = "Anbringelse",
                    #            )
                    #          )
                    # )
-                 )   
-                ) 
+                 )
+                )
         )
 ),
 
