@@ -6,66 +6,69 @@ rm(list=ls())
 # Load packages -----------------------------------------------------------
 
 # Shiny-pakker
-require(shiny)
-require(shinydashboard)
-require(shinyWidgets)
-require(shinyFeedback)
-require(shinycssloaders)
-require(shinyBS)
-require(shinyhelper)
-#require(shinyjs)
+library(shiny)
+library(shinydashboard)
+library(shinyWidgets)
+library(shinyFeedback)
+library(shinycssloaders)
+library(shinyBS)
+library(shinyhelper)
+#library(shinyjs)
 
 # Databearbejdning
-require(tidyr)
-require(dplyr)
-require(glue)
-require(readr)
-require(purrr)
+library(tidyr)
+library(dplyr)
+library(glue)
+library(readr)
+library(purrr)
 
 # Grafik og tabeller
-require(ggplot2)
-require(ggthemes)
-require(gt)
+library(ggplot2)
+library(ggthemes)
+library(gt)
 
 # Eksport af grafik og tabeller
-require(webshot)
-require(openxlsx)
+library(webshot)
+library(openxlsx)
 
 # Diverse
-require(htmltools)
+library(htmltools)
+
+
+# Soruce R functions ----------
+source("./R/server_functions.R")
+source("./R/ui_functions.R")
 
 
 # Load data ---------------------------------------------------------------
+data_ksb_spread <- read.csv("app_data/data_ksb_2013_2022Q4_spread.csv", encoding = "UTF-8", sep = ";")
 
+data_udk_spread <- read.csv("app_data/data_udk_spread_2022_Q4.csv", encoding = "UTF-8", sep = ";")
 
-data_ksb_spread <- read.csv("data_ksb_2013_2022Q4_spread.csv", encoding = "UTF-8", sep = ";")
+data_ask_spread <- read.csv("app_data/data_ask_spread_2022_Q4.csv", encoding = "UTF-8", sep = ";")
 
-data_udk_spread <- read.csv("data_udk_spread_2022_Q4.csv", encoding = "UTF-8", sep = ";")
+data_tilsyn_spread <- read.csv("app_data/data_tilsyn_spread_2022Q4.csv", encoding = "UTF-8", sep = ";")
 
-data_ask_spread <- read.csv("data_ask_spread_2022_Q4.csv", encoding = "UTF-8", sep = ";")
+data_mellemkommunal_spread <- read.csv("app_data/data_mellemkommunal_spread_2022_Q4.csv", encoding = "UTF-8", sep = ";")
 
-data_tilsyn_spread <- read.csv("data_tilsyn_spread_2022Q4.csv", encoding = "UTF-8", sep = ";")
+data_underretning_spread <- read.csv("app_data/data_underretning_spread_2022.csv", encoding =  "UTF-8", sep = ";")
 
-data_mellemkommunal_spread <- read.csv("data_mellemkommunal_spread_2022_Q4.csv", encoding = "UTF-8", sep = ";")
+data_tvangsadoption_spread <- read.csv("app_data/data_tvangsadoption_spread_2022Q4.csv", encoding =  "UTF-8", sep = ";")
 
-data_underretning_spread <- read.csv("data_underretning_spread_2022.csv", encoding =  "UTF-8", sep = ";")
+data_anbringelse_spread <- read.csv("app_data/data_anbringelse_spread_2022.csv", encoding = "UTF-8", sep = ";")
 
-data_tvangsadoption_spread <- read.csv("data_tvangsadoption_spread_2022Q4.csv", encoding =  "UTF-8", sep = ";")
-
-data_anbringelse_spread <- read.csv("data_anbringelse_spread_2022.csv", encoding = "UTF-8", sep = ";")
-
-kommuner <- read.csv("kommuner.csv", encoding = "UTF-8", sep = ";")
+kommuner <- read.csv("app_data/kommuner.csv", encoding = "UTF-8", sep = ";")
 
 kommuner <- kommuner %>%
   arrange(Region, Kommune) %>%
   mutate(fuldt_navn = paste(Kommune, 'Kommune') )
 
-Sagsemner <- read.csv("Sagsemner_uden_nummer_2022Q4.csv", encoding = "UTF-8", sep = ";")
+Sagsemner <- read.csv("app_data/Sagsemner_uden_nummer_2022Q4.csv", encoding = "UTF-8", sep = ";")
 
 
-Sagsemner_udk <- read.csv("Sagsemner_udk_opdatering_11.csv", encoding = "UTF-8", sep = ";", stringsAsFactors = FALSE)
+Sagsemner_udk <- read.csv("app_data/Sagsemner_udk_opdatering_10.csv", encoding = "UTF-8", sep = ";", stringsAsFactors = FALSE)
 
-Sagsemner_ask <- read.csv("Sagsemner_ask_3.csv", encoding="UTF-8", sep=";", na.strings="NULL", stringsAsFactors=FALSE)
+Sagsemner_ask <- read.csv("app_data/Sagsemner_ask_3.csv", encoding="UTF-8", sep=";", na.strings="NULL", stringsAsFactors=FALSE)
 
 Sagsemner_tilsyn <- unique(as.character(data_tilsyn_spread$Sagsemne))
 
@@ -73,7 +76,7 @@ Sagsemner_tilsyn_tb <- tibble(Sagsemner_tilsyn) %>%
   mutate(Lovgrundlag = "Kommunestyrelsesloven")
 #Sagsemner_tilsyn_tb$Sagsemner_tilsyn <- as.character(Sagsemner_tilsyn_tb$Sagsemner_tilsyn)
 
-Sagsemner_forside <- read.csv("Sagsemner_samlet_nye_omraeder_2.csv", encoding = "UTF-8", sep = ";", stringsAsFactors = FALSE)
+Sagsemner_forside <- read.csv("app_data/Sagsemner_samlet_nye_omraeder_2.csv", encoding = "UTF-8", sep = ";", stringsAsFactors = FALSE)
 
 Sagsemner <- Sagsemner %>%
   arrange(Lovgivning, Sorteringskode)
@@ -81,9 +84,9 @@ Sagsemner <- Sagsemner %>%
 Sagsemner_forside <- Sagsemner_forside %>%
   arrange(Omraade, Lovgrundlag, Sagsemne)
 
-datohierarki <- read.csv("datohierarki.csv", encoding="UTF-8", sep=";", stringsAsFactors=FALSE)
+datohierarki <- read.csv("app_data/datohierarki.csv", encoding="UTF-8", sep=";", stringsAsFactors=FALSE)
 
-instanser <- read.csv("instanser.csv", encoding = "UTF-8", sep=";", stringsAsFactors = FALSE)
+instanser <- read.csv("app_data/instanser.csv", encoding = "UTF-8", sep=";", stringsAsFactors = FALSE)
 
 
 
