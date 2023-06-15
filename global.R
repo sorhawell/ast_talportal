@@ -22,6 +22,7 @@ library(dplyr)
 library(glue)
 library(readr)
 library(purrr)
+library(data.table)
 
 # Grafik og tabeller
 library(ggplot2)
@@ -42,7 +43,10 @@ source("./R/ui_functions.R")
 
 
 # Load data ---------------------------------------------------------------
-data_ksb_spread <- read.csv("app_data/data_ksb_2013_2022Q4_spread.csv", encoding = "UTF-8", sep = ";")
+# data_ksb_spread <- read.csv("app_data/data_ksb_2013_2022Q4_spread.csv", encoding = "UTF-8", sep = ";")
+#7 times faster csv reader, use full for 100Mb file
+data_ksb_spread <- data.table::fread("app_data/data_ksb_2013_2022Q4_spread.csv", sep = ";") |>
+  data.table::setDF()
 
 data_udk_spread <- read.csv("app_data/data_udk_spread_2022_Q4.csv", encoding = "UTF-8", sep = ";")
 
