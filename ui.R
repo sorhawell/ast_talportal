@@ -1,7 +1,6 @@
 
 
 # Header ---------------------------------------------
-
 header <- dashboardHeader(
   #disable = TRUE,
   #title = "Ankestyrelsens talportal",
