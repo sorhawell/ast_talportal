@@ -1,3 +1,4 @@
+renv::restore()
 rm(list=ls())
 
 #### OBS: ingen danske bogstaver i denne fil. Se: https://github.com/rstudio/shinydashboard/issues/190#issuecomment-334078366 ###
