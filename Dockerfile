@@ -2,3 +2,4 @@
 FROM rocker/shiny-verse
 COPY deploy/install_r_packages.R /srv/R_files/
 RUN Rscript /srv/R_files/install_r_packages.R
+COPY deploy/config/shiny-server.conf /etc/shiny-server/shiny-server.conf
